@@ -3,14 +3,14 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "dev": "nodemon --inspect server.js",
+    "start": "nodemon --inspect src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://gitlab.com/yyasvoin/fs1020-project.git"
   },
-  "author": "Yuri Yasvoin<yasvoin@gmail.com>",
+  "author": "Yuri Yasvoin <yasvoin@gmail.com>",
   "bugs": {
     "url": "https://gitlab.com/yyasvoin/fs1020-project/issues"
   },
