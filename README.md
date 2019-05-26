@@ -1,7 +1,7 @@
-This Project is about a CellPhone Store.
-Every CellPhone has following parameters:
--- id
--- name
--- price
--- brand
+# Computer Store
 
+Every computer has following properties:
+- id
+- name
+- price
+- brand
