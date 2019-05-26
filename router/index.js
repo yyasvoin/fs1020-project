@@ -11,31 +11,31 @@ router.get('/', (req, res) => {
 });
 
 router.post('/register', (req, res, next) => {
-  res.statusCode = 201;
+  res.sendStatus(200);
 });
 
 router.post('/login', (req, res, next) => {
-  res.statusCode = 202;
+  res.sendStatus(200);
 });
 
 router.get('/product', (req, res, next) => {
-  res.statusCode = 200;
+  res.sendStatus(200);
 });
 
 router.get('/item/:id', (req, res, next) => {
-  res.statusCode = 200;
+  res.sendStatus(200);
 });
 
 router.post('/item', (req, res, next) => {
-  res.statusCode = 200;
+  res.sendStatus(200);
 });
 
 router.delete('/item/:id', (req, res, next) => {
-  res.statusCode = 200;
+  res.sendStatus(200);
 });
 
 router.patch('/item/:id', (req, res, next) => {
-  res.statusCode = 200;
+  res.sendStatus(200);
 });
 
 
