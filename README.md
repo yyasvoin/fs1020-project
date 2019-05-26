@@ -4,10 +4,4 @@ Every CellPhone has following parameters:
 -- name
 -- price
 -- brand
--- releaseYear
--- displaySize
--- ramGb
--- batterySize
--- quantity
--- smartphone
--- available
+
