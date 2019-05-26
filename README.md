@@ -1,7 +1,8 @@
-This Project is about a Computer Store.
-Every Computer has following parameters:
--- id
--- name
--- price
--- brand
+# Computer Store
+
+Every computer has following properties:
+- id
+- name
+- price
+- brand
 
