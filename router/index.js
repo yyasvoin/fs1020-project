@@ -1,13 +1,15 @@
 'use strict';
 
 const express = require('express');
-
 const router = express.Router();
 
 
 // Renders the home page
 router.get('/', (req, res) => {
-  res.render('home');
+  res.render('home', {
+    pageId: 'home',
+    title: 'Home',
+  });
 });
 
 router.post('/register', (req, res, next) => {
