@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-		"start": "nodemon --inspect src/index.js",
+    "start": "nodemon --inspect server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
