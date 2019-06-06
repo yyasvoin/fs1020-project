@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head'); %>
+  </head>
+  <body class="p-3 mb-2 bg-dark text-white">
+    <%- include('partials/header'); %>
+
+    <main>
+
+      <section>
+        <br />
+        <br />
+        <table class="table table-striped table-dark table-borderless table-hover">
+          <thead>
+            <tr class="col-len">
+              <th scope="col">Name</th>
+              <th scope="col">Brand</th>
+              <th scope="col">ID</th>
+              <th scope="col">Description</th>
+              <th scope="col">Price (CAD)</th>
+              <th scope="col">Quantity (# of units)</th>
+              <th scope="col">Available in Store</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% items.forEach((computer) => { %>
+              <tr>
+                <th scope="row"><%= computer.id %></th>
+                <td><%= computer.name %></td>
+                <td><%= computer.brand %></td>
+                <td><%= computer.id %></td>
+                <td><%= computer.description %></td>
+                <td><%= computer.price %></td>
+                <td><%= computer.quantity %></td>
+                <td>
+                  <img
+                    width="30"
+                    height="30"
+                    src="/static/<%= computer.available ? 'true.png' : 'false.png' %>"
+                    alt="<%= computer.available ? 'Is in stock' : 'Is not in stock' %>"
+                  />
+
+                </td>
+              </tr>
+            <% }); %>
+          </tbody>
+
+          <tfoot>
+            <tr>
+              <td colspan="11" style="text-align:right;">Total: <%= items.length %></td>
+            </tr>
+          </tfoot>
+        </table>
+      </section>
+
+
+    </main>
+
+    <%- include('partials/footer'); %>
+  </body>
+</html>

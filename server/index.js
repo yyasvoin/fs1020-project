@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = require('./router');
-const defaultErrorHandler = require('./middleware/default-error-handler.js');
+const defaultErrorHandler = require('../middleware/default-error-handler.js');
 
 
 // Create an instance of an Express server app
@@ -15,7 +15,7 @@ app.set('view engine', 'ejs');
 app.use('/static', express.static('static'));
 
 // Parse incoming JSON
-app.use(express.json({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 // Add our defined routes from router.js
 app.use(router);

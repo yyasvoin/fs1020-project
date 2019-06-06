@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <%- include('partials/head'); %>
+  </head>
+  <body>
+    <%- include('partials/header'); %>
+
+    <main>
+      <section class="container">
+        <form class="search-form" action="/search">
+          <div class="row">
+            <div class="form-group col-12 col-sm-3  ">
+              <label class="form-label">Name</label>
+              <input class="form-control" name="name" type="text" value="<%= formValues.name %>" />
+            </div>
+
+     
+
+            <div class="form-group col-12 col-sm-4">
+              <label class="form-label">available</label>
+              <select class="form-control" name="available">
+                <option value="">Select...</option>
+                <option
+                  value="true"
+                  <%= formValues.available === true ? 'selected' : '' %>
+                >
+                  True
+                </option>
+                <option
+                  value="false"
+                  <%= formValues.available === false ? 'selected' : '' %>
+                >
+                  False
+                </option>
+              </select>
+            </div>
+
+            <div class="col-12 col-sm-1">
+              <button class="btn btn-info" type="submit">Search</button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <section class="container">
+        <table class="country-table table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>available</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% items.forEach((computer) => { %>
+              <tr>
+                <td><%= computer.name %></td>
+                <td>
+                  <img
+                    width="40"
+                    height="40"
+                    src="/static/<%= computer.available ? 'true.png' : 'false.png' %>"
+                    alt="<%= computer.available ? 'Is available' : 'Is not available' %>"
+                  />
+                </td>
+              </tr>
+            <% }); %>
+          </tbody>
+
+          <tfoot>
+            <tr>
+              <td colspan="3">Total: <%= items.length %></td>
+            </tr>
+          </tfoot>
+        </table>
+      </section>
+    </main>
+
+    <%- include('partials/footer'); %>
+  </body>
+</html>

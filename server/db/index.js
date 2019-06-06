@@ -30,6 +30,20 @@ async function writeItems(items) {
   await writeFile(filePath, json);
 }
 
+async function searchItems(query) {
+  let items = await readItems();
+
+ /* if (query.name) {
+    const pattern = new RegExp(query.name, 'i');
+    items = items.filter(item => pattern.test(item.name));
+  }
+
+  if (typeof query.available === 'boolean') {
+    items = items.filter(item => item.available === query.available);
+  }
+*/
+  return items;
+}
 
 
 /**
@@ -55,6 +69,7 @@ async function createItem(item) {
 
 
 module.exports = {
+ searchItems,
   itemExists,
   createItem,
   getAllItems: readItems,

@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
+let db = require('./db');
 
 
 // Renders the home page
@@ -11,6 +12,24 @@ router.get('/', (req, res) => {
     title: 'Home',
   });
 });
+
+// Search page
+router.get('/search', async (req, res, next) => {
+  if (req.query.available) req.query.available = req.query.available === 'true';
+  try {
+    const items = await db.searchItems(req.query);
+    res.render('search', {
+      items,
+      pageId: 'search',
+      title: 'search',
+      formValues: req.query,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+
 
 router.post('/register', (req, res, next) => {
   res.sendStatus(200);
