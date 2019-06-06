@@ -13,7 +13,7 @@
     "name": "HP 15.6inch Touchscreen Laptop",
     "brand": "HP",
     "id": 1001,
-	"description": "(Intel Core i5-8265U/1TB HDD/8GB RAM/Windows 10)"
+	"description": "(Intel Core i5-8265U/1TB HDD/8GB RAM/Windows 10)",
 	"price":"$599",
 	"quantity": 3,
     "available": true
