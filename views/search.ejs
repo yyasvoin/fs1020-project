@@ -11,14 +11,22 @@
         <form class="search-form" action="/search">
           <div class="row">
             <div class="form-group col-12 col-sm-3  ">
-              <label class="form-label">Name</label>
-              <input class="form-control" name="name" type="text" value="<%= formValues.name %>" />
+              <label class="form-label">ID</label>
+              <input class="form-control" name="id" type="text" value="<%= formValues.id %>" />
             </div>
 
      
+            <%-
+              include('partials/brand-select', {
+                classes: 'col-12 col-sm-4',
+                value: formValues.brand,
+                error: null,
+              })
+            %>
+
 
             <div class="form-group col-12 col-sm-4">
-              <label class="form-label">available</label>
+              <label class="form-label">Available</label>
               <select class="form-control" name="available">
                 <option value="">Select...</option>
                 <option
@@ -47,15 +55,19 @@
         <table class="country-table table">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>available</th>
+              <th>ID</th>
+			  <th>Brand</th>
+			  <th>Description</th>
+              <th>Warehouse pick up is available</th>
             </tr>
           </thead>
 
           <tbody>
             <% items.forEach((computer) => { %>
               <tr>
-                <td><%= computer.name %></td>
+                <td><%= computer.id %></td>
+				 <td><%= computer.brand %></td>
+				 <td><%= computer.description %></td>
                 <td>
                   <img
                     width="40"

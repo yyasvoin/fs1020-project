@@ -33,15 +33,19 @@ async function writeItems(items) {
 async function searchItems(query) {
   let items = await readItems();
 
- /* if (query.name) {
-    const pattern = new RegExp(query.name, 'i');
-    items = items.filter(item => pattern.test(item.name));
+ if (query.id) {
+    const pattern = new RegExp(query.id, 'i');
+    items = items.filter(item => pattern.test(item.id));
   }
+  
+  if (query.brand) {
+    items = items.filter(item => item.brand === query.brand);
+  }
+
 
   if (typeof query.available === 'boolean') {
     items = items.filter(item => item.available === query.available);
   }
-*/
   return items;
 }
 

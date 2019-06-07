@@ -13,6 +13,22 @@ router.get('/', (req, res) => {
   });
 });
 
+// Catalog page
+router.get('/catalog', async (req, res, next) => {
+  if (req.query.available) req.query.available = req.query.available === 'true';
+  try {
+    const items = await db.searchItems(req.query);
+    res.render('catalog', {
+      items,
+      pageId: 'catalog',
+      title: 'catalog',
+      formValues: req.query,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
 // Search page
 router.get('/search', async (req, res, next) => {
   if (req.query.available) req.query.available = req.query.available === 'true';
