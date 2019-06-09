@@ -79,5 +79,14 @@
     "price": "$1,729",
     "quantity": "4",
     "available": true
+  },
+  {
+    "name": "Apple MacBook Pro 13.3\" Laptop",
+    "brand": "Apple",
+    "id": "1009",
+    "description": "Intel Core i5 2.3GHz / 256GB SSD / 8GB RAM",
+    "price": "$1,729",
+    "quantity": "4",
+    "available": true
   }
 ]
