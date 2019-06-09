@@ -52,12 +52,12 @@ async function searchItems(query) {
 
 /**
  * Returns whether an item (computer) exists or not.
- * @param {string} brand of computer
+ * @param {string} ID of computer
  * @returns {Promise<boolean>}
  */
-async function itemExists(brand) {
+async function itemExists(id) {
   const items = await readItems();
-  return items.some(items => items.brand === brand);
+  return items.some(item => item.id === id);
 }
 
 
@@ -68,7 +68,7 @@ async function itemExists(brand) {
  */
 async function createItem(item) {
   const allItems = await readItems();
-  await writeItems(allItems.concat(items));
+  await writeItems(allItems.concat(item));
 }
 
 

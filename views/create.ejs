@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <%- include('partials/head'); %>
+  </head>
+  <body>
+    <%- include('partials/header'); %>
+
+    <form class="container" method="post" action="/create">
+	<p class="p-3 mb-2 bg-danger text-white"><%= formErrors.global %></p>
+	
+		<div class="form-group">
+        <label for="name">Name</label>
+        <input
+          id="name"
+          class="form-control <%= formErrors.name && 'is-invalid' %>"
+          name="name"
+          type="text"
+          value="<%= formValues.name %>"
+        />
+		<p class="invalid-feedback"><%= formErrors.name %></p>
+      </div>
+	    <div class="form-group">
+        <label for="brand">Brand</label>
+        <input
+          id="brand"
+          class="form-control <%= formErrors.brand && 'is-invalid' %>"
+          name="brand"
+          type="text"
+          value="<%= formValues.brand %>"
+        />
+		<p class="invalid-feedback"><%= formErrors.brand %></p>
+      </div>
+      <div class="form-group">
+        <label for="id">ID</label>
+        <input
+          id="id"
+          class="form-control <%= formErrors.id && 'is-invalid' %>"
+          name="id"
+          type=number
+          value="<%= formValues.id %>"
+          min="1000"
+          max="9999"
+        />
+		<p class="invalid-feedback"><%= formErrors.id %></p>
+      </div>
+
+
+      <div class="form-group">
+        <label for="name">Description</label>
+        <input
+          id="description"
+          class="form-control <%= formErrors.description && 'is-invalid' %>"
+          name="description"
+          type="text"
+          value="<%= formValues.description %>"
+        />
+		<p class="invalid-feedback"><%= formErrors.description %></p>
+      </div>
+      <div class="form-group">
+        <label for="name">Price</label>
+        <input
+          id="price"
+          class="form-control <%= formErrors.price && 'is-invalid' %>"
+          name="price"
+          type="text"
+          value="<%= formValues.price %>"
+        />
+		<p class="invalid-feedback"><%= formErrors.price %></p>
+      </div>
+	    <div class="form-group">
+        <label for="name">Quantity</label>
+        <input
+          id="quantity"
+          class="form-control <%= formErrors.quantity && 'is-invalid' %>"
+          name="quantity"
+          type="number"
+          value="<%= formValues.quantity %>"
+        />
+		<p class="invalid-feedback"><%= formErrors.quantity %></p>
+      </div>
+	   <div class="form-group col-12">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input
+                  class="form-control form-check-input"
+                  name="available"
+                  type="checkbox"
+                  value="on"
+                  <%= formValues.available ? 'checked' : '' %>
+                />
+                Available for pick up (tick the checkbox...)
+              </label>
+            </div>
+		</div>
+
+
+       
+			<br>
+			<br>
+
+
+	   <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+    </form>
+			<br>
+  <%# END %>
+
+
+    <%- include('partials/footer'); %>
+  </body>
+</html>

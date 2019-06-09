@@ -3,64 +3,81 @@
     "name": "ASUS VivoBook 15.6inch Laptop",
     "brand": "Asus",
     "id": 1000,
-	"description": "(AMD Quad-Core R5-2500U/256GB SSD/8GB RAM/Windows 10)",
-	"price":"$799",
-	"quantity": 4,
+    "description": "AMD Quad-Core R5-2500U/256GB SSD/8GB RAM/Windows 10",
+    "price": "$799",
+    "quantity": 4,
     "available": true
-
   },
   {
     "name": "HP 15.6inch Touchscreen Laptop",
     "brand": "HP",
     "id": 1001,
-	"description": "(Intel Core i5-8265U/1TB HDD/8GB RAM/Windows 10)",
-	"price":"$599",
-	"quantity": 3,
+    "description": "Intel Core i5-8265U/1TB HDD/8GB RAM/Windows 10",
+    "price": "$599",
+    "quantity": 3,
     "available": true
   },
-   {
+  {
     "name": "Acer Aspire 5 Series 15.6inch Laptop",
     "brand": "Acer",
     "id": 1002,
-	"description": "(Intel Core i7-8550U/1TB HDD/12GB RAM/Windows 10)",
-	"price":"$1,049",
-	"quantity": 2,
+    "description": "Intel Core i7-8550U/1TB HDD/12GB RAM/Windows 10",
+    "price": "$1,049",
+    "quantity": 2,
     "available": true
   },
-   {
+  {
     "name": "Microsoft Surface 2 13.5inch Touchscreen Laptop",
     "brand": "Microsoft",
     "id": 1003,
-	"description": "(Intel Core i5/128GB SSD/8GB RAM)",
-	"price":"$1,299",
-	"quantity": 1,
+    "description": "Intel Core i5/128GB SSD/8GB RAM",
+    "price": "$1,299",
+    "quantity": 1,
     "available": true
   },
   {
     "name": "Dell XPS 15.6inch Laptop",
     "brand": "Dell",
     "id": 1004,
-	"description": "(Intel Core i7-8750H/256GB SSD/8GB RAM/Windows 10)",
-	"price":"$1,699",
-	"quantity": 0,
+    "description": "Intel Core i7-8750H/256GB SSD/8GB RAM/Windows 10",
+    "price": "$1,699",
+    "quantity": 0,
     "available": false
   },
-   {
+  {
     "name": "Apple MacBook Pro 13.3inch Laptop",
     "brand": "Apple",
     "id": 1005,
-	"description": "(i5 2.3GHz/128GB SSD/8GB RAM)",
-	"price":"$1,729",
-	"quantity": 5,
+    "description": "Intel Core i5 2.3GHz/128GB SSD/8GB RAM",
+    "price": "$1,729",
+    "quantity": 5,
     "available": true
   },
-   {
+  {
     "name": "Apple MacBook Air 13.3inch w/ Retina",
     "brand": "Apple",
     "id": 1006,
-	"description": "(Intel Core i5 / 128GB SSD / 8GB RAM)",
-	"price":"$1,399",
-	"quantity": 4,
+    "description": "Intel Core i5 / 128GB SSD / 8GB RAM",
+    "price": "$1,399",
+    "quantity": 4,
+    "available": true
+  },
+  {
+    "name": "Apple MacBook Pro 13.3\" Laptop",
+    "brand": "Apple",
+    "id": "1007",
+    "description": "Intel Core i5 2.3GHz / 256GB SSD / 8GB RAM",
+    "price": "$1,729",
+    "quantity": "2",
+    "available": true
+  },
+  {
+    "name": "Apple MacBook Pro 13.3\" Laptop",
+    "brand": "Apple",
+    "id": "1008",
+    "description": "Intel Core i5 2.3GHz / 256GB SSD / 8GB RAM",
+    "price": "$1,729",
+    "quantity": "4",
     "available": true
   }
 ]

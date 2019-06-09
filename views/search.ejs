@@ -52,12 +52,13 @@
       </section>
 
       <section class="container">
-        <table class="country-table table">
+        <table  class="table table-striped table-dark table-borderless table-hover">
           <thead>
             <tr>
               <th>ID</th>
 			  <th>Brand</th>
 			  <th>Description</th>
+			  <th>Price</th>
               <th>Warehouse pick up is available</th>
             </tr>
           </thead>
@@ -68,6 +69,7 @@
                 <td><%= computer.id %></td>
 				 <td><%= computer.brand %></td>
 				 <td><%= computer.description %></td>
+				 <td><%= computer.price %></td>
                 <td>
                   <img
                     width="40"
@@ -82,7 +84,7 @@
 
           <tfoot>
             <tr>
-              <td colspan="3">Total: <%= items.length %></td>
+              <td colspan="11" style="text-align:right;">Total: <%= items.length %></td>
             </tr>
           </tfoot>
         </table>
