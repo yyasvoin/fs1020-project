@@ -88,5 +88,23 @@
     "price": "$1,729",
     "quantity": "4",
     "available": true
+  },
+  {
+    "name": "dfsdf",
+    "brand": "Apple",
+    "id": "1010",
+    "description": "dfsfasf",
+    "price": "asdg",
+    "quantity": "3",
+    "available": true
+  },
+  {
+    "name": "fwEFW",
+    "brand": "fewfeWFEW",
+    "id": "1004",
+    "description": "Wfwfwf",
+    "price": "$1899",
+    "quantity": "3",
+    "available": true
   }
 ]
