@@ -17,11 +17,14 @@ app.use('/static', express.static('static'));
 // Parse incoming JSON
 app.use(express.urlencoded({ extended: true }));
 
+app.use(express.json());
+
 // Add our defined routes from router.js
 app.use(router);
 
 // Default error handler should in any of our routes we call next() with an error
 app.use(defaultErrorHandler);
+
 
 
 // Start the express server

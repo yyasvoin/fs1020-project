@@ -28,20 +28,19 @@
             <% items.forEach((computer) => { %>
               <tr>
                 <th scope="row"><%= computer.id %></th>
-                <td><%= computer.name %></td>
+               
+				<td><%= computer.name %></td>
                 <td><%= computer.brand %></td>
                 <td><%= computer.description %></td>
                 <td><%= computer.price %></td>
                 <td><%= computer.quantity %></td>
-                <td><%= computer.available %></td>
                 <td>
                   <img
-                    width="30"
-                    height="30"
+                    width="40"
+                    height="40"
                     src="/static/<%= computer.available ? 'true.png' : 'false.png' %>"
-                    alt="<%= computer.available ? 'Is in stock' : 'Is not in stock' %>"
+                    alt="<%= computer.available ? 'Is available' : 'Is not available' %>"
                   />
-
                 </td>
               </tr>
             <% }); %>

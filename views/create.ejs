@@ -39,8 +39,8 @@
           name="id"
           type=number
           value="<%= formValues.id %>"
-          min="1000"
-          max="9999"
+          min="0"
+          max="20"
         />
 		<p class="invalid-feedback"><%= formErrors.id %></p>
       </div>
@@ -74,7 +74,7 @@
           id="quantity"
           class="form-control <%= formErrors.quantity && 'is-invalid' %>"
           name="quantity"
-          type="number"
+          type=number
           value="<%= formValues.quantity %>"
         />
 		<p class="invalid-feedback"><%= formErrors.quantity %></p>

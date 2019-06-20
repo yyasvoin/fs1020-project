@@ -26,10 +26,11 @@ async function readItems() {
  * @returns {Promise<undefined>}
  */
 async function writeItems(items) {
-  const json = JSON.stringify(items, null, 2);
-  await writeFile(filePath, json);
-}
-
+    let json = JSON.stringify(items, null, 2);
+    return writeFile(filePath, json)
+      .then(() => items);
+    }
+	
 async function searchItems(query) {
   let items = await readItems();
 
@@ -61,6 +62,7 @@ async function itemExists(id) {
 }
 
 
+
 /**
  * Adds a new item (computer) to DB.
  * @param {item} item to create
@@ -71,10 +73,62 @@ async function createItem(item) {
   await writeItems(allItems.concat(item));
 }
 
+/**
+ * Gets an item by ID and returns the matching item
+ */
+async function getComputerById(id) {
+  const computers = await readItems();
+  let matchedComputer;
+  computers.forEach((computer) => {
+    if (computer.id === id) {
+      matchedComputer = computer;
+    }
+  });
+  return matchedComputer;
+}
+
+async function deleteItemById(id) {
+  return readItems()
+    .then((allItems) => {
+      if (id > allItems.length){
+        throw new Error('Entered ID does not exist');
+      }
+      return allItems.filter((item) => {
+        if (item.id !== id) {
+          return item;
+        }
+      });
+    })
+    .then((products) => {
+      return writeItems(products);
+    });
+}
+
+async function updateItemById(id,updatedComputer) {
+  return readItems()
+    .then((allComputers) => {
+      return allComputers.map((computer) => {
+        if (id > allComputers.length){
+          throw new Error('Entered ID does not exist');
+        } else if (computer.id === id) {
+          return updatedComputer;
+        } else {
+          return computer;
+        }
+      });
+    })
+    .then((products) => {
+      return writeItems(products);
+    });
+}
 
 module.exports = {
  searchItems,
   itemExists,
-  createItem,
+  createItem: createItem,
+  deleteItemById: deleteItemById,
+  updateItemById: updateItemById,
+  getComputerById:getComputerById,
   getAllItems: readItems,
+  
 };

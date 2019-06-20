@@ -108,7 +108,8 @@ router.post('/create', async (req, res, next) => {
       await db.createItem({
         ...req.body,
         available: !!req.body.available,
-		
+		id: Number(req.body.id),
+		quantity: Number(req.body.quantity),
       });
       res.redirect(`/search?name=${req.body.name}`);
     } catch (error) {
@@ -116,8 +117,74 @@ router.post('/create', async (req, res, next) => {
     }
   }
   });
+  
+  
+// All the following commands are for Postman
+
+router.get('/product', async (req, res, next) => {
+  try {
+    // Get all the computer porducts json
+    const allComputers = await db.getAllItems();
+
+    // Send status and all the porducts json
+    res
+      .status(200)
+      .send(allComputers);
+  } catch (error) {
+    next(error);
+  }
+});
 
 
+//list product by ID 
+
+router.get('/product/:input', async (req, res, next) => {
+  try {
+    // Get Computer by ID
+	const id = parseInt(req.params.input, 10);
+    const computer = await db.getComputerById(id);
+
+     // Send matched product if that exists
+    if (computer) {
+      res
+        .status(200)
+        .json(computer);
+    } else {
+        res
+          .status(404)
+          .json({
+            message: 'ID match not found'
+          });
+      }
+  } catch (error) {
+    next(error);
+  }
+});
+
+  
+  
+// Update Item by ID
+
+router.put('/update/:id', (req,res,next) => {
+  const inputId = parseInt(req.params.id,10);
+  db.updateItemById(inputId, req.body)
+    .then(() => {
+      res.redirect(200,'../product');
+    })
+    .catch(next);
+});
+
+  
+ // Delete Item by ID
+  
+router.delete('/delete/:id', (req,res,next) => {
+  const inputId = parseInt(req.params.id);
+  db.deleteItemById(inputId)
+    .then(() => {
+      res.redirect(200,'../product');
+    })
+    .catch(next);
+});
 
 
 router.post('/register', (req, res, next) => {
@@ -128,25 +195,6 @@ router.post('/login', (req, res, next) => {
   res.sendStatus(200);
 });
 
-router.get('/product', (req, res, next) => {
-  res.sendStatus(200);
-});
-
-router.get('/item/:id', (req, res, next) => {
-  res.sendStatus(200);
-});
-
-router.post('/item', (req, res, next) => {
-  res.sendStatus(200);
-});
-
-router.delete('/item/:id', (req, res, next) => {
-  res.sendStatus(200);
-});
-
-router.patch('/item/:id', (req, res, next) => {
-  res.sendStatus(200);
-});
 
 
 module.exports = router;
