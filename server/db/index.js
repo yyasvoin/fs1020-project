@@ -8,6 +8,80 @@ let readFile = util.promisify(fs.readFile);
 let writeFile = util.promisify(fs.writeFile);
 
 const filePath = path.resolve('server/db/items.json');
+let userPath = path.resolve('server/db/password.json');
+
+
+
+async function createUser(newUser) {
+  //validate username
+  if (!newUser.username || !newUser.password || typeof newUser.username !== 'string' || typeof newUser.password !== 'string') {
+    throw new Error('Invalid username or password');
+  }
+
+
+  return readUsers()
+    .then((user1) => {
+      //check for unique username
+      user1.forEach((inUser) => {
+        if (inUser.username === newUser.username) {
+          //function will not execute, and user will not be saved
+          throw new Error('Username already in use');
+        }
+      });
+
+      user1.push(newUser);
+      return writeUsers(user1);
+    });
+}
+
+async function readUsers() {
+  return readFile(userPath)
+    .then((contents) => {
+    return JSON.parse(contents);
+  });
+}
+
+
+async function usernameExists(username) {
+  return readUsers()
+    .then((users) => {
+      let exists = false;
+
+      users.forEach((user) => {
+        if (user.username === username) {
+          exists = true;
+        }
+      });
+
+      return exists;
+    });
+}
+
+
+function getUserPasswordHash(username) {
+  return readUsers()
+    .then((users) => {
+      let match;
+
+      users.forEach((user) => {
+        if (user.username === username) {
+          match = user;
+        }
+      });
+
+      if (!match) {
+        throw new Error('User does not exist.');
+      }
+
+      return match.password;
+    });
+}
+
+
+async function writeUsers (newUser) {
+  let userJson = JSON.stringify(newUser, null, 2);
+  return writeFile(userPath, userJson);
+}
 
 
 /**
@@ -30,7 +104,7 @@ async function writeItems(items) {
     return writeFile(filePath, json)
       .then(() => items);
     }
-	
+
 async function searchItems(query) {
   let items = await readItems();
 
@@ -38,7 +112,7 @@ async function searchItems(query) {
     const pattern = new RegExp(query.id, 'i');
     items = items.filter(item => pattern.test(item.id));
   }
-  
+
   if (query.brand) {
     items = items.filter(item => item.brand === query.brand);
   }
@@ -90,9 +164,6 @@ async function getComputerById(id) {
 async function deleteItemById(id) {
   return readItems()
     .then((allItems) => {
-      if (id > allItems.length){
-        throw new Error('Entered ID does not exist');
-      }
       return allItems.filter((item) => {
         if (item.id !== id) {
           return item;
@@ -108,9 +179,7 @@ async function updateItemById(id,updatedComputer) {
   return readItems()
     .then((allComputers) => {
       return allComputers.map((computer) => {
-        if (id > allComputers.length){
-          throw new Error('Entered ID does not exist');
-        } else if (computer.id === id) {
+        if (computer.id === id) {
           return updatedComputer;
         } else {
           return computer;
@@ -130,5 +199,9 @@ module.exports = {
   updateItemById: updateItemById,
   getComputerById:getComputerById,
   getAllItems: readItems,
-  
+   createUser: createUser,
+  readUsers: readUsers,
+  usernameExists: usernameExists,
+  getUserPasswordHash: getUserPasswordHash,
+
 };
