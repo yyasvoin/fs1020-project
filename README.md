@@ -42,6 +42,7 @@ Part Three
 
 
 Use: 
-rm -rf node_modules package-lock.json && npm install argon2@latest && npm install
-npm install popper.js --save
+
+*  rm -rf node_modules package-lock.json && npm install argon2@latest && npm install
+*  npm install popper.js --save
 
