@@ -40,3 +40,8 @@ Part Three
 4.	Implement the JSON API endpoint to log a user in: a. Must take a username and password b. Store session IDs securely in HTTP only cookies
 5.	Protect all routes, pages, and static assets with the exception of /login and /register, behind authentication so only authenticated users may access them.
 
+
+Use: 
+rm -rf node_modules package-lock.json && npm install argon2@latest && npm install
+npm install popper.js --save
+
