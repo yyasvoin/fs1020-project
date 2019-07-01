@@ -16,8 +16,12 @@
   },
   "homepage": "https://gitlab.com/yyasvoin/fs1020-project#readme",
   "dependencies": {
+    "argon2": "^0.24.0",
+    "dotenv": "^7.0.0",
     "ejs": "^2.6.1",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "express-session": "^1.16.2",
+    "popper.js": "^1.15.0"
   },
   "devDependencies": {
     "eslint": "^5.3.0",

@@ -2,10 +2,45 @@
 
 const express = require('express');
 const router = express.Router();
+
+let homeRoutes = require('./home');
+let catalogRoutes = require('./catalog');
+let createRoutes = require('./create');
+let loginRoutes = require('./login');
+let logoutRoutes = require('./logout');
+let registerRoutes = require('./register');
+let searchRoutes = require('./search');
+let dbComp = require('../server/db/items')
+let db = require('../server/db');
+
+
 const bodyParser = require('body-parser');
-let db = require('./db');
 
 
+
+
+// Home page
+router.get('/', homeRoutes.get);
+
+// Catalog page
+router.get('/catalog', catalogRoutes.get);
+
+// Create page
+router.get('/create', createRoutes.get);
+
+// Search page
+router.get('/search', searchRoutes.get);
+
+// Login page
+router.get('/login', loginRoutes.get);
+router.post('/login', loginRoutes.post);
+
+// Logout
+router.get('/logout', logoutRoutes.get);
+
+// Register page
+router.get('/register', registerRoutes.get);
+router.post('/register', registerRoutes.post);
 
 // Renders the home page
 router.get('/', (req, res) => {
@@ -35,9 +70,9 @@ router.get('/catalog', async (req, res, next) => {
 router.get('/search', async (req, res, next) => {
   if (req.query.available) req.query.available = req.query.available === 'true';
   try {
-    const items = await db.searchItems(req.query);
+    const comps = await db.searchItems(req.query);
     res.render('search', {
-      items,
+      comps,
       pageId: 'search',
       title: 'search',
       formValues: req.query,
@@ -99,7 +134,7 @@ router.post('/create', async (req, res, next) => {
         .render('create', {
           pageId: 'create',
           title: 'Add a Computer',
-         
+
 		formValues: req.body,
 		formErrors,
         });
@@ -111,14 +146,14 @@ router.post('/create', async (req, res, next) => {
 		id: Number(req.body.id),
 		quantity: Number(req.body.quantity),
       });
-      res.redirect(`/search?name=${req.body.name}`);
+      res.redirect(`/catalog`);
     } catch (error) {
       next(error);
     }
   }
   });
-  
-  
+
+
 // All the following commands are for Postman
 
 router.get('/product', async (req, res, next) => {
@@ -136,7 +171,7 @@ router.get('/product', async (req, res, next) => {
 });
 
 
-//list product by ID 
+//list product by ID
 
 router.get('/product/:input', async (req, res, next) => {
   try {
@@ -161,8 +196,8 @@ router.get('/product/:input', async (req, res, next) => {
   }
 });
 
-  
-  
+
+
 // Update Item by ID
 
 router.put('/update/:id', (req,res,next) => {
@@ -174,11 +209,11 @@ router.put('/update/:id', (req,res,next) => {
     .catch(next);
 });
 
-  
+
  // Delete Item by ID
-  
+
 router.delete('/delete/:id', (req,res,next) => {
-  const inputId = parseInt(req.params.id);
+  const inputId = parseInt(req.params.id,10);
   db.deleteItemById(inputId)
     .then(() => {
       res.redirect(200,'../product');
@@ -186,14 +221,6 @@ router.delete('/delete/:id', (req,res,next) => {
     .catch(next);
 });
 
-
-router.post('/register', (req, res, next) => {
-  res.sendStatus(200);
-});
-
-router.post('/login', (req, res, next) => {
-  res.sendStatus(200);
-});
 
 
 

@@ -106,22 +106,22 @@ async function writeItems(items) {
     }
 
 async function searchItems(query) {
-  let items = await readItems();
+  let foundItems = await readItems();
 
  if (query.id) {
-    const pattern = new RegExp(query.id, 'i');
-    items = items.filter(item => pattern.test(item.id));
+    query.id = Number(query.id);
+    foundItems = foundItems.filter(item => item.id===query.id);
   }
 
   if (query.brand) {
-    items = items.filter(item => item.brand === query.brand);
+    foundItems = foundItems.filter(item => item.brand === query.brand);
   }
 
 
   if (typeof query.available === 'boolean') {
-    items = items.filter(item => item.available === query.available);
+    foundItems = foundItems.filter(item => item.available === query.available);
   }
-  return items;
+  return foundItems;
 }
 
 

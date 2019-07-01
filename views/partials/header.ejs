@@ -1,47 +1,87 @@
-<header class="navbar justify-content-end justify-content-sm-between">
-  <h1 class="h5 d-none d-sm-block">
-    Online Computer Store
-  </h1>
-
+<header class="navbar navbar-light" style="background-color: #33b5e5;">
   <nav>
-    <ul class="navbar-nav bd-navbar-nav">
+    <!-- <span class="navbar-brand mb-0 h1">FS1020 Project - Product List</span> -->
 
-      <li class="nav-item">
-        <a
-          class="nav-link <%= pageId === 'home' ? 'active' : null %>"
-          href="/"
-        >
-          Home
-        </a>
-      </li>
+    <ul class="navbar-nav">
+      <li class="navbar-brand mb-0 h1">FS1020 Project - Online Computer Store</li>
+	  
+      <li>
+      <%-
+        include('nav-item', {
+          id: 'home',
+          href: '/',
+          text: 'Home',
+        });
+      %>
+    </li>
 
-      <li class="nav-item">
-        <a
-          class="nav-link <%= pageId === 'catalog' ? 'active' : null %>"
-          href="/catalog"
-        >
-          Catalog
-        </a>
+    <li>
+        <%-
+          include('nav-item', {
+            id: 'catalog',
+            href: '/catalog',
+            text: 'Catalog',
+          });
+        %>
       </li>
 	  
-	  <li class="nav-item">
-        <a
-          class="nav-link <%= pageId === 'search' ? 'active' : null %>"
-          href="/search"
-        >
-          Search
-        </a>
+	  <li>
+        <%-
+          include('nav-item', {
+            id: 'search',
+            href: '/search',
+            text: 'Search',
+          });
+        %>
       </li>
-
-      <li class="nav-item">
-        <a
-          class="nav-link <%= pageId === 'create' ? 'active' : null %>"
-          href="/create"
-        >
-          Create
-        </a>
+	  
+	   <li>
+        <%-
+          include('nav-item', {
+            id: 'create',
+            href: '/create',
+            text: 'Create',
+          });
+        %>
       </li>
-
     </ul>
   </nav>
+
+  <% if (username) { %>
+    <div class="navbar-authenticated" >
+      <p class="navbar-greeting" style="color: #413f42;">
+        Welcome,
+        <span class="navbar-greeting-username"><%= username %></span>
+      </p>
+
+      <a class="btn btn-sm btn-warning" href="/logout">
+        Logout
+      </a>
+    </div>
+  <% } else { %>
+    <nav>
+	
+      <ul class="navbar-nav bd-navbar-nab">
+        <%-
+          include('nav-item', {
+            id: 'register',
+            href: '/register',
+            text: 'Register',
+          });
+        %>
+
+        <%-
+          include('nav-item', {
+            id: 'login',
+            href: '/login',
+            text: 'Login',
+          });
+        %>
+      </ul>
+    </nav>
+  <% } %>
+
 </header>
+  <br />
+  <br />
+  <br />

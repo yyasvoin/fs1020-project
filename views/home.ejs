@@ -1,26 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <%- include('partials/head'); %>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   </head>
-  <body>
+  <body class="p-3 mb-2 bg-dark text-black">
     <%- include('partials/header'); %>
 
     <main>
+      <% if (!username) { %>
+        <div class="jumbotron jumbotron-fluid ">
+			<div class="container ">
+				<div class="shadow p-3 mb-5 bg-white rounded">
+					<h4 class="display-4 ">FS1020 Project - Online Computer Store</h4>
+					<p class="lead"> Registered users, please Login to check Computers Catalog.</p>
+				</div>
+			</div>
+		</div>
+      <% } else { %>
+	<div class="container" >
+    <div class="jumbotron" style="background-color: #e3f2fd;">
+        <h1 class="display-5" style="color: #5e5863;">Computer e-Shop</h1>
+        <p class="lead" style="color: #5e5863;">Your one stop Computer e-Shop: Shop computers online</p>
+		<p class="lead" style="color: #5e5863;">Use dropdown menu to choose your action</p>
+        <hr class="my-4" >
+	<!--Dropdown primary-->
+<div class="dropdown">
+
+  <!--Trigger-->
+  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+    aria-haspopup="true" aria-expanded="false">Menu</button>
 
 
-	<div class="container">
-
-    <div class="jumbotron">
-        <h1 class="display-5">Computer e-Shop</h1>
-        <p class="lead">Your one stop Computer e-Shop: Shop computers online</p>
-        <hr class="my-4">
-        <p>Didn't find your computer? Add it and we'll stock up!</p>
-        <p class="lead">
-            <a class="btn btn-primary btn-md" href="/create" role="button">Add a Computer</a>
-        </p>
-    </div>
+  <!--Menu-->
+  <div class="dropdown-menu dropdown-primary">
+    <a class="dropdown-item" href="/search">Search</a>
+    <a class="dropdown-item" href="/catalog">Catalog</a>
+    <a class="dropdown-item" href="/create">Add a Computer</a>
+  </div>
 </div>
+<!--/Dropdown primary-->
+    </div>
+	</div>
+      <% } %>
 
     </main>
 

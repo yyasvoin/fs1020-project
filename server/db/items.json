@@ -1,5 +1,14 @@
 [
   {
+    "name": "HP Omen Obelisk Gaming PC",
+    "brand": "HP",
+    "id": 1,
+    "description": "Intel Core i7-8700/2TB HDD/256GB SSD/16GB RAM/GeForce GTX 1060",
+    "price": "$1,499",
+    "quantity": 7,
+    "available": true
+  },
+  {
     "name": "Acer Aspire 5 Series 15.6inch Laptop",
     "brand": "Acer",
     "id": 2,
@@ -63,12 +72,30 @@
     "available": true
   },
   {
-    "name": "Apple MacBook Pro with Touch Bar 15.4\"",
-    "brand": "Apple",
+    "name": "Lenovo IdeaPad 15.6inch Laptop ",
+    "brand": "Lenovo",
     "id": 9,
-    "description": "Intel Core i9 2.3 GHz/512GB/16BG RAM",
-    "price": "$3,699",
+    "description": "AMD E2-9000/500GB HDD/4 GB RAM/Windows 10",
+    "price": "$349",
     "quantity": 5,
+    "available": true
+  },
+  {
+    "name": "Lenovo IdeaPad 15.6inch Laptop ",
+    "brand": "Lenovo",
+    "id": 10,
+    "description": "AMD E2-9000/500GB HDD/4 GB RAM/Windows 10",
+    "price": "$349",
+    "quantity": 5,
+    "available": true
+  },
+  {
+    "name": "Microsoft Surface 2 13.5\" Touchscreen Laptop",
+    "brand": "Microsoft",
+    "id": 12,
+    "description": "Intel Core i5/256GB SSD/8GB RAM",
+    "price": "$1,299",
+    "quantity": 4,
     "available": true
   }
 ]

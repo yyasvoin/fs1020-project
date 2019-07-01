@@ -59,6 +59,7 @@
 			  <th>Brand</th>
 			  <th>Description</th>
 			  <th>Price</th>
+			  <th>Quantity </th>
               <th>Warehouse pick up is available</th>
             </tr>
           </thead>
@@ -70,11 +71,12 @@
 				 <td><%= computer.brand %></td>
 				 <td><%= computer.description %></td>
 				 <td><%= computer.price %></td>
+				  <td><%= computer.quantity  %></td>
                 <td>
                   <img
                     width="40"
                     height="40"
-                    src="/static/<%= computer.available ? 'true.png' : 'false.png' %>"
+                    src="/static/protected/<%= computer.available ? 'true.png' : 'false.png' %>"
                     alt="<%= computer.available ? 'Is available' : 'Is not available' %>"
                   />
                 </td>
